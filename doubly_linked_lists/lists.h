@@ -20,46 +20,8 @@ typedef struct dlistint_s
 
 /* Prototypes */
 size_t print_dlistint(const dlistint_t *h);
-size_t dlistint_len(const dlistint_t *h)i;
-size_t print_dlistint(const dlistint_t *h);
 size_t dlistint_len(const dlistint_t *h);
 dlistint_t *add_dnodeint(dlistint_t **head, const int n);
-#include <stdlib.h>
-#include "lists.h"
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
 
-/**
- * add_dnodeint_end - adds a new node at the end of a dlistint_t list
- * @head: double pointer to the head of the list
- * @n: integer to add to the new node
- *
- * Return: the address of the new element, or NULL if it failed
- */
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
-{
-	dlistint_t *new;
-	dlistint_t *temp;
-
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-		return (NULL);
-
-	new->n = n;
-	new->next = NULL;
-
-	if (*head == NULL)
-	{
-		new->prev = NULL;
-		*head = new;
-		return (new);
-	}
-
-	temp = *head;
-	while (temp->next != NULL)
-		temp = temp->next;
-
-	temp->next = new;
-	new->prev = temp;
-
-	return (new);
-}
 #endif /* LISTS_H */
